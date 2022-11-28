@@ -1,0 +1,24 @@
+.popup-content {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu__item {
+  padding: 8px 8px;
+  border-radius: 6px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.menu__item--danger {
+  color: rgb(164, 0, 0);
+}
+
+.menu__item--danger:hover {
+  background-color: rgb(255, 219, 219) !important;
+}
+
+.menu__item:hover {
+  background-color: rgb(232, 232, 232);
+}

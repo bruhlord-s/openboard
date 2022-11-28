@@ -1,0 +1,54 @@
+.group__title {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 18px;
+}
+
+.group__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.group__open-list,
+.group__collapse-list {
+  width: 32px;
+  margin-right: 8px;
+}
+
+.group__collapse-list {
+  transform: rotate(90deg);
+}
+
+.group__add-workspace {
+  width: 40px;
+  cursor: pointer;
+}
+
+.group__menu {
+  width: 24px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.group__workspaces {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.group__icons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.group__no-workspaces {
+  margin-left: 32px;
+  font-size: 18px;
+  user-select: none;
+  color: rgb(139, 139, 139);
+} 

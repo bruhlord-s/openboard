@@ -1,0 +1,18 @@
+.user {
+    display: flex;
+    gap: 12px;
+}
+
+.user__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.user__email {
+    font-size: 16px;
+}
+
+.user__icon {
+    width: 32px;
+}
