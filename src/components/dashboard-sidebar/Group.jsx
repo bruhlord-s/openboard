@@ -53,7 +53,7 @@ export default function Group({ data, fetchUserData }) {
         {!isCollapsed &&
           <div>
             {data.workspaces.map((workspace) => (
-              <Workspace data={workspace} key={workspace.id} />
+              <Workspace data={workspace} key={workspace.id} fetchUserData={fetchUserData} />
             ))}
             {data.workspaces.length < 1 && <p className="group__no-workspaces">No workspaces</p>}
           </div>

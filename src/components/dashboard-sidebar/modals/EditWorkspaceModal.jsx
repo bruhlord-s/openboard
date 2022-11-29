@@ -28,7 +28,7 @@ export default function EditWorkspaceModal({
 
     axios
       .put(
-        `/workspace/${group.id}`,
+        `/workspace/${workspace.id}`,
         {
           name: nameInput,
         },
@@ -52,7 +52,7 @@ export default function EditWorkspaceModal({
   return (
     <Popup open={open} onClose={() => setOpen(false)} position="right center">
       <h2 className="modal__title">
-        Edit <span className="modal__accent">{group.name}</span> group
+        Edit <span className="modal__accent">{workspace.name}</span> workspace
       </h2>
       <input
         className="modal__input"
