@@ -5,17 +5,21 @@
   user-select: none;
 }
 
+.group__name {
+  font-size: 18px;
+}
+
 .group__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .group__open-list,
 .group__collapse-list {
-  width: 32px;
-  margin-right: 8px;
+  width: 10px;
+  margin-right: 10px;
 }
 
 .group__collapse-list {
@@ -23,13 +27,13 @@
 }
 
 .group__add-workspace {
-  width: 40px;
+  width: 16px;
   cursor: pointer;
 }
 
 .group__menu {
   width: 24px;
-  height: 28px;
+  height: 24px;
   cursor: pointer;
 }
 
@@ -46,8 +50,8 @@
 }
 
 .group__no-workspaces {
-  margin-left: 32px;
-  font-size: 18px;
+  margin-left: 20px;
+  font-size: 16px;
   user-select: none;
-  color: rgb(139, 139, 139);
+  color: #00000050;
 } 

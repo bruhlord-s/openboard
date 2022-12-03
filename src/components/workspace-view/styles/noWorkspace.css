@@ -1,0 +1,18 @@
+.no-workspace {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+
+    color: #00000080;
+}
+
+.no-workspace__kaomoji {
+    font-size: 96px;
+}
+
+.no-workspace__message {
+    font-size: 32px;
+}

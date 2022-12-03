@@ -1,20 +1,29 @@
 .workspace {
-  padding: 12px 32px;
-  border-radius: 8px;
+  width: 100%;
+  border-radius: 6px;
+
+  padding: 7px 11px;
 
   display: flex;
+  width: calc(100% - 20px);
+  margin-left: 20px;
+
   align-items: center;
   justify-content: space-between;
 }
 
 .workspace:hover {
-  background-color: #f6f6f6;
+  background-color: #EDEDED;
 }
 
 .workspace__title {
-  font-size: 18px;
+  font-size: 16px;
   user-select: none;
   cursor: pointer;
+}
+
+.workspace__title:hover {
+  text-decoration: underline;
 }
 
 .workspace__menu {

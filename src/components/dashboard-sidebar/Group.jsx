@@ -33,7 +33,7 @@ export default function Group({ data, fetchUserData }) {
               alt="close"
             />
           )}{" "}
-          {data.name}
+          <p className="group__name">{data.name}</p>
         </div>
         <div className="group__icons">
           <img
@@ -55,7 +55,7 @@ export default function Group({ data, fetchUserData }) {
             {data.workspaces.map((workspace) => (
               <Workspace data={workspace} key={workspace.id} fetchUserData={fetchUserData} />
             ))}
-            {data.workspaces.length < 1 && <p className="group__no-workspaces">No workspaces</p>}
+            {data.workspaces.length < 1 && <p className="group__no-workspaces">No workspaces in the group =\</p>}
           </div>
         }
       </div>

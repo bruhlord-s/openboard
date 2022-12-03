@@ -1,9 +1,10 @@
-<svg width="390" height="390" viewBox="0 0 390 390" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M64 25H357.558C362.21 25 365.568 29.4536 364.288 33.9259L290.782 290.782L33.9259 364.288C29.4536 365.568 25 362.21 25 357.558V64C25 42.4609 42.4609 25 64 25Z" fill="white" stroke="url(#paint0_radial_1_3)" stroke-width="50"/>
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 44C8 24.1178 24.1178 8 44 8H92V50C92 73.196 73.196 92 50 92H8V44Z" stroke="url(#paint0_radial_1_8)" stroke-width="16"/>
+<circle cx="65.8287" cy="31.5429" r="6.4" fill="#BD3BF1"/>
 <defs>
-<radialGradient id="paint0_radial_1_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(198.5 186) rotate(-134.757) scale(333.757 333.757)">
-<stop stop-color="#CD2B2B"/>
-<stop offset="1" stop-color="#BC08E9"/>
+<radialGradient id="paint0_radial_1_8" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(73.5 74.5) rotate(-138.766) scale(113.028)">
+<stop offset="0.3125" stop-color="#DB2AF8"/>
+<stop offset="1" stop-color="#00A7CC"/>
 </radialGradient>
 </defs>
 </svg>

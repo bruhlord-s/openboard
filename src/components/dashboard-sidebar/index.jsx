@@ -79,10 +79,10 @@ export default function Sidebar() {
       ) : (
         <>
           <div className="sidebar__body">
-            <h2 className="sidebar__body-title">Your workspaces</h2>
+            <h2 className="sidebar__body-title">Your groups</h2>
             {groups.length < 1 ? (
               <>
-                <p>No groups. </p>
+                <p className="sidebar__body-no-groups">You have no groups =/</p>
               </>
             ) : (
               <div className="sidebar__groups">
@@ -96,11 +96,14 @@ export default function Sidebar() {
               </div>
             )}
 
-            <Button
-              className="sidebar__create-one"
-              title="Create group"
-              onClick={() => setShowCreateGroupModal(!showCreateGroupModal)}
-            />
+            <div className="button-wrapper">
+              <Button
+                className="sidebar__create-one"
+                title="New group"
+                onClick={() => setShowCreateGroupModal(!showCreateGroupModal)}
+              />
+            </div>
+
             <CreateGroupModal open={showCreateGroupModal} setOpen={setShowCreateGroupModal}
                               fetchUserData={fetchUserData} />
           </div>

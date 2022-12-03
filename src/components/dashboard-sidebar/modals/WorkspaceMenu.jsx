@@ -1,6 +1,6 @@
 import Popup from "reactjs-popup";
 import "../styles/menu.css";
-import DotsMenu from "../../../assets/dots-menu.svg"
+import Menu from "../../../assets/menu.svg"
 
 export default function WorkspaceMenu({
                                     setShowEditModal,
@@ -8,7 +8,7 @@ export default function WorkspaceMenu({
                                   }) {
   return (
     <Popup
-      trigger={<img className="workspace__menu" src={DotsMenu} alt="menu" />}
+      trigger={<img className="workspace__menu" src={Menu} alt="menu" />}
       position="right top"
       on="click"
       closeOnDocumentClick

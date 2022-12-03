@@ -2,5 +2,6 @@
     min-width: 100vw;
     min-height: 100vh;
 
-    background-color: rgb(226, 226, 226);
+    background: radial-gradient(50% 50% at 50% 50%, #FFDACE 0%, #FFFFFF 100%);
+    display: flex;
 }
