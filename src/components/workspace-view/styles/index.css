@@ -1,0 +1,16 @@
+.workspace-view {
+    padding: 40px 35px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-x: auto;
+    gap: 40px;
+}
+
+.workspace-view__boards {
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-start;
+    overflow-x: auto;
+    gap: 30px;
+}

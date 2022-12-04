@@ -1,0 +1,40 @@
+.board {
+    width: 275px;
+    border-radius: 8px;
+    background: #fff;
+    flex-shrink: 0;
+}
+
+.board__color {
+    height: 7px;
+    border-radius: 6px 6px 0px 0px;
+    width: 100%;
+}
+
+.board__inner {
+    padding: 12px 14px;
+}
+
+.board__title {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.board__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.board__right {
+    display: flex;
+    align-items: center;
+}
+
+.board__counter {
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background-color: #EFEFEF;
+    margin-right: 10px;
+}

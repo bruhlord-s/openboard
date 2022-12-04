@@ -4,13 +4,16 @@ import EditWorkspaceModal from "./modals/EditWorkspaceModal";
 import { useState } from "react";
 import ConfirmDeleteWorkspaceModal from "./modals/ConfirmDeleteWorkspaceModal";
 
-export default function Workspace({ data, fetchUserData }) {
-  const [showEditModal, setShowEditModal] = useState(false)
-  const [showDeleteModal, setShowDeleteModal] = useState(false)
+export default function Workspace({ data, fetchUserData, setWorkspaceId }) {
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   return (
     <div className="workspace" key={data.id}>
-      <p className="workspace__title">{data.name}</p>
+      <p className="workspace__title"
+         onClick={() => setWorkspaceId(data.id)}>
+        {data.name}
+      </p>
       <WorkspaceMenu setShowEditModal={setShowEditModal} setShowConfirmDeleteModal={setShowDeleteModal} />
 
       <EditWorkspaceModal

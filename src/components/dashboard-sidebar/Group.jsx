@@ -9,7 +9,7 @@ import EditGroupModal from "./modals/EditGroupModal";
 import InviteToGroupModal from "./modals/InviteToGroupModal";
 import ConfirmDeleteGroupModal from "./modals/ConfirmDeleteGroupModal.jsx";
 
-export default function Group({ data, fetchUserData }) {
+export default function Group({ data, fetchUserData, setWorkspaceId }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [showEditGroupModal, setShowEditGroupModal] = useState(false);
   const [showInviteModal, setShowInviteModal] = useState(false);
@@ -53,7 +53,8 @@ export default function Group({ data, fetchUserData }) {
         {!isCollapsed &&
           <div>
             {data.workspaces.map((workspace) => (
-              <Workspace data={workspace} key={workspace.id} fetchUserData={fetchUserData} />
+              <Workspace data={workspace} key={workspace.id} fetchUserData={fetchUserData}
+                         setWorkspaceId={setWorkspaceId} />
             ))}
             {data.workspaces.length < 1 && <p className="group__no-workspaces">No workspaces in the group =\</p>}
           </div>

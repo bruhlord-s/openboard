@@ -1,26 +1,42 @@
 .popup-content {
-  border-radius: 16px;
   border: 0;
-  border-radius: 16px;
-  padding: 24px;
+  border-radius: 8px;
+  padding: 20px;
   width: 500px;
 }
 
 .modal__title {
-  font-size: 24px;
+  font-size: 18px;
+  font-weight: 700;
   padding: 8px 0;
   line-height: 1.5;
+  margin-bottom: 18px;
 }
 
 .modal__input {
   width: 100%;
-  margin-top: 20px;
   border-radius: 6px;
 }
 
 .modal__submit {
-  width: 100%;
-  margin-top: 20px;
+  width: 175px;
+  padding: 14px 0;
+
+  background: radial-gradient(100% 1225% at 0% 13%, rgba(79, 122, 219, 0.86) 0%, rgba(218, 42, 247, 0.89) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  border-radius: 8px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  border: 0;
+
+  margin-top: 24px;
+}
+
+.modal__input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .modal__accent {
@@ -35,10 +51,16 @@
 }
 
 .modal__button {
-  color: #000;
-  background: #fff;
-  background-color: #fff;
-  border: 2px solid #000;
+  width: 175px;
+  padding: 14px 0;
+
+  background: radial-gradient(100% 1225% at 0% 13%, rgba(79, 122, 219, 0.86) 0%, rgba(218, 42, 247, 0.89) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  border-radius: 8px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  border: 0;
 }
 
 .modal__errors {

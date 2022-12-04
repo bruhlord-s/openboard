@@ -20,6 +20,10 @@
     margin-bottom: 40px;
 }
 
+.skeleton__header-title {
+    width: 220px;
+}
+
 .skeleton__group {
     display: flex;
     flex-direction: column;

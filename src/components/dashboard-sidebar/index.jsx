@@ -11,7 +11,7 @@ import CreateGroupModal from "./modals/CreateGroupModal";
 import SkeletonBody from "./skeleton/SkeletonBody.jsx";
 import SkeletonFooter from "./skeleton/SkeletonFooter";
 
-export default function Sidebar() {
+export default function Sidebar({ setWorkspaceId }) {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [groups, setGroups] = useState([]);
@@ -91,6 +91,7 @@ export default function Sidebar() {
                     data={group}
                     key={group.id}
                     fetchUserData={fetchUserData}
+                    setWorkspaceId={setWorkspaceId}
                   />
                 ))}
               </div>
