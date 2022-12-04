@@ -3,6 +3,13 @@
   border-radius: 8px;
   padding: 20px;
   width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.popup-content[role="tooltip"] {
+  gap: 0px;
 }
 
 .modal__title {
@@ -10,7 +17,6 @@
   font-weight: 700;
   padding: 8px 0;
   line-height: 1.5;
-  margin-bottom: 18px;
 }
 
 .modal__input {
@@ -22,7 +28,12 @@
   width: 175px;
   padding: 14px 0;
 
-  background: radial-gradient(100% 1225% at 0% 13%, rgba(79, 122, 219, 0.86) 0%, rgba(218, 42, 247, 0.89) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  background: radial-gradient(
+      100% 1225% at 0% 13%,
+      rgba(79, 122, 219, 0.86) 0%,
+      rgba(218, 42, 247, 0.89) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
   border-radius: 8px;
 
   font-size: 18px;
@@ -30,7 +41,7 @@
 
   border: 0;
 
-  margin-top: 24px;
+  cursor: pointer;
 }
 
 .modal__input-row {
@@ -44,17 +55,16 @@
   font-style: italic;
 }
 
-.modal__footer {
-  margin-top: 24px;
-  display: flex;
-  justify-content: space-around;
-}
-
 .modal__button {
   width: 175px;
   padding: 14px 0;
 
-  background: radial-gradient(100% 1225% at 0% 13%, rgba(79, 122, 219, 0.86) 0%, rgba(218, 42, 247, 0.89) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  background: radial-gradient(
+      100% 1225% at 0% 13%,
+      rgba(79, 122, 219, 0.86) 0%,
+      rgba(218, 42, 247, 0.89) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
   border-radius: 8px;
 
   font-size: 18px;

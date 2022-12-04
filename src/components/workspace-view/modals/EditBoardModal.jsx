@@ -5,14 +5,15 @@ import "reactjs-popup/dist/index.css";
 import "../../dashboard-sidebar/styles/modal.css";
 import axios from "axios";
 
-export default function CreateBoardModal({
+export default function EditBoardModal({
   open,
   setOpen,
-  workspaceId,
+  boardId,
   fetchWorkspace,
+  values,
 }) {
-  const [nameInput, setNameInput] = useState("");
-  const [colorInput, setColorInput] = useState("#000000");
+  const [nameInput, setNameInput] = useState(values.name);
+  const [colorInput, setColorInput] = useState(values.color);
   const [isLoading, setIsLoading] = useState(false);
   const [disableSubmit, setDisableSubmit] = useState(true);
 
@@ -28,12 +29,11 @@ export default function CreateBoardModal({
     setIsLoading(true);
 
     axios
-      .post(
-        "/board",
+      .put(
+        `/board/${boardId}`,
         {
           name: nameInput,
           color: colorInput,
-          workspace_id: workspaceId,
         },
         {
           headers: {
@@ -60,6 +60,7 @@ export default function CreateBoardModal({
           type="color"
           onInput={(e) => setColorInput(e.currentTarget.value)}
           disabled={isLoading}
+          value={colorInput}
         />
         <input
           className="modal__input"
@@ -67,12 +68,13 @@ export default function CreateBoardModal({
           placeholder="Enter a name"
           onInput={(e) => setNameInput(e.target.value)}
           disabled={isLoading}
+          value={nameInput}
         />
       </div>
 
       <Button
         className="modal__submit"
-        title="Create"
+        title="Edit"
         disabled={isLoading || disableSubmit}
         onClick={() => handleSubmit()}
       />

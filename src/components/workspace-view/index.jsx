@@ -13,11 +13,12 @@ export default function WorkspaceView({ workspaceId }) {
   const fetchWorkspace = () => {
     setIsLoading(true);
 
-    axios.get(`/workspace/${workspaceId}`, {
-      headers: {
-        "Authorization": `Bearer ${localStorage.getItem("auth_token")}`
-      }
-    })
+    axios
+      .get(`/workspace/${workspaceId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+        },
+      })
       .then((res) => {
         setWorkspace(res.data.data);
         setIsLoading(false);
@@ -34,14 +35,22 @@ export default function WorkspaceView({ workspaceId }) {
 
   return (
     <div className="workspace-view">
-      <WorkspaceViewHeader data={workspace} setShowAddBoardModal={setShowAddBoardModal} isLoading={isLoading} />
+      <WorkspaceViewHeader
+        data={workspace}
+        setShowAddBoardModal={setShowAddBoardModal}
+        isLoading={isLoading}
+      />
       <div className="workspace-view__boards">
         {workspace?.boards.map((board) => (
-          <Board data={board} />
+          <Board data={board} fetchWorkspace={fetchWorkspace} key={board.id} />
         ))}
       </div>
-      <CreateBoardModal open={showAddBoardModal} setOpen={setShowAddBoardModal} workspaceId={workspace?.id}
-                        fetchWorkspace={fetchWorkspace} />
+      <CreateBoardModal
+        open={showAddBoardModal}
+        setOpen={setShowAddBoardModal}
+        workspaceId={workspace?.id}
+        fetchWorkspace={fetchWorkspace}
+      />
     </div>
   );
 }

@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import Popup from "reactjs-popup";
-import Button from "../../Button";
-import "reactjs-popup/dist/index.css";
-import "../styles/modal.css";
 import axios from "axios";
+import { useState } from "react";
+import Popup from "reactjs-popup";
+import Button from "../Button";
+import "../dashboard-sidebar/styles/modal.css";
 
-export default function ConfirmDeleteWorkspaceModal({
+export default function ConfirmDeleteModal({
   open,
   setOpen,
-  workspace,
-  fetchUserData,
+  data,
+  endpoint,
+  update,
 }) {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,14 +17,14 @@ export default function ConfirmDeleteWorkspaceModal({
     setIsLoading(true);
 
     axios
-      .delete(`/workspace/${workspace.id}`, {
+      .delete(endpoint, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
         },
       })
       .then(() => {
         setIsLoading(false);
-        fetchUserData();
+        update();
         setOpen(false);
       })
       .catch((err) => {
@@ -37,18 +37,13 @@ export default function ConfirmDeleteWorkspaceModal({
     <Popup open={open} onClose={() => setOpen(false)} position="right center">
       <h2 className="modal__title">
         Are you sure you want to delete{" "}
-        <span className="modal__accent">{workspace.name}</span> workspace?
+        <span className="modal__accent">{data.name}</span>?
       </h2>
       <div className="modal__footer">
         <Button
           title="Confirm"
-          className="modal__button modal__button--danger"
+          className="modal__submit"
           onClick={() => handleConfirm()}
-        />
-        <Button
-          title="Cancel"
-          className="modal__button"
-          onClick={() => setOpen(false)}
         />
       </div>
     </Popup>
