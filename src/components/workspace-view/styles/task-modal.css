@@ -1,0 +1,106 @@
+.task-modal-popup {
+  padding: 24px;
+  width: 600px;
+}
+
+.task-modal__title {
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 32px;
+}
+
+.task-modal__workspace-name {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.task-modal__task-name {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.task-modal__task-name-divider {
+  font-size: 18px;
+  color: #00000080;
+}
+
+.task-modal__task-name-input {
+  width: 250px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+}
+
+.task-modal__desc-input {
+  width: 100%;
+}
+
+.task-modal__desc-input {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  resize: none;
+  padding: 13px;
+  font-size: 16px;
+  transition: 0.1s;
+  margin-bottom: 20px;
+}
+
+.task-modal__desc-input:focus {
+  outline: none;
+  border: 1px solid rgba(0, 0, 0);
+}
+
+.task-modal__input-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.task-modal__input-group {
+  width: 220px;
+}
+
+.task-modal__input-name {
+  margin-bottom: 6px;
+}
+
+.task-modal__input {
+  width: 220px;
+  border-radius: 6px;
+}
+
+.task-modal__footer {
+  display: flex;
+  justify-content: center;
+}
+
+.task-modal__btn {
+  background: radial-gradient(
+      100% 1225% at 0% 13%,
+      rgba(79, 122, 219, 0.86) 0%,
+      rgba(218, 42, 247, 0.89) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  border-radius: 8px;
+
+  font-weight: 700;
+  color: #fff;
+
+  width: 175px;
+  font-size: 18px;
+  padding: 14px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.task-modal__btn:hover {
+  box-shadow: 1px 1px 4px #00000080;
+}

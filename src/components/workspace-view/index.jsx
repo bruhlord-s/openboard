@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CreateBoardModal from "./modals/CreateBoardModal";
 import Board from "./Board";
+import CreateTaskModal from "./modals/CreateTaskModal";
 
 export default function WorkspaceView({ workspaceId }) {
   const [workspace, setWorkspace] = useState();
   const [showAddBoardModal, setShowAddBoardModal] = useState(false);
+  const [showAddTaskModal, setShowAddTaskModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchWorkspace = () => {
@@ -38,6 +40,7 @@ export default function WorkspaceView({ workspaceId }) {
       <WorkspaceViewHeader
         data={workspace}
         setShowAddBoardModal={setShowAddBoardModal}
+        setShowAddTaskModal={setShowAddTaskModal}
         isLoading={isLoading}
       />
       <div className="workspace-view__boards">
@@ -50,6 +53,12 @@ export default function WorkspaceView({ workspaceId }) {
         setOpen={setShowAddBoardModal}
         workspaceId={workspace?.id}
         fetchWorkspace={fetchWorkspace}
+      />
+      <CreateTaskModal
+        open={showAddTaskModal}
+        setOpen={setShowAddTaskModal}
+        workspace={workspace}
+        update={fetchWorkspace}
       />
     </div>
   );
