@@ -1,20 +1,20 @@
-import "../assets/styles/register.css";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import Button from "../components/Button";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import SignForm from "../components/sign-form/SignForm";
 
 const validationSchema = Yup.object({
-  email: Yup.string("Введите почту")
-    .required("Это поле обязательно")
-    .max(255, "Не длинее 255 символов")
-    .email("Введите валидный адрес"),
-  password: Yup.string("Введите пароль")
-    .required("Это поле обязательно")
-    .max(255, "Не длинее 255 символов")
-    .min(6, "Пароль должен быть длиннее 6 символов"),
+  email: Yup.string("Enter email")
+    .required("This field is required")
+    .max(255, "Shorter than 255 characters")
+    .email("Enter valid email"),
+  password: Yup.string("Enter password")
+    .required("This field is required")
+    .max(255, "Shorter than 255 characters")
+    .min(6, "Password must be longer than 6 characters"),
 });
 
 export default function Login() {
@@ -43,11 +43,7 @@ export default function Login() {
   };
 
   return (
-    <div className="container">
-      <h2 className="register__heading">Вход</h2>
-
-      {errors.length > 0 && <div className="register__errors">{errors}</div>}
-
+    <SignForm title={"Sign In"} errors={errors}>
       <Formik
         initialValues={{
           email: "",
@@ -60,27 +56,29 @@ export default function Login() {
           <Form className="register__form form">
             <div className="form__item">
               <label>Email</label>
-              <Field type="email" name="email" />
+              <Field
+                type="email"
+                name="email"
+                placeholder="example@gmail.com"
+              />
               <ErrorMessage name="email" component="div" />
             </div>
             <div className="form__item">
-              <label>Пароль</label>
-              <Field type="password" name="password" />
+              <label>Password</label>
+              <Field type="password" name="password" placeholder="●●●●●●●●" />
               <ErrorMessage name="password" component="div" />
             </div>
 
-            <Button
-              title="Далее"
-              submit={true}
-              className={"form__submit"}
-              disabled={isSubmitting}
-            />
+            <div className="form__submit">Sign In</div>
+            <p className="another">
+              First time here?{" "}
+              <Link className="another__link" to="/register">
+                Sign up
+              </Link>
+            </p>
           </Form>
         )}
       </Formik>
-      <p className="register__to-login">
-        Впервые здесь? <Link to="/register">Зарегистрируйтесь!</Link>
-      </p>
-    </div>
+    </SignForm>
   );
 }

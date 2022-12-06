@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Logo from "../Logo";
+import Logo from "../logo/Logo";
 import Group from "./Group";
 import "./styles/index.css";
 import User from "./User";
@@ -23,13 +23,13 @@ export default function Sidebar({ setWorkspaceId }) {
     axios
       .get("/user", {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("auth_token")}`
-        }
+          Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+        },
       })
       .then((res) => {
         setUser({
           name: res.data.data.name,
-          email: res.data.data.email
+          email: res.data.data.email,
         });
         setGroups(res.data.data.groups);
         setIsLoading(false);
@@ -52,8 +52,8 @@ export default function Sidebar({ setWorkspaceId }) {
       {},
       {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("auth_token")}`
-        }
+          Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+        },
       }
     );
     localStorage.removeItem("auth_token");
@@ -63,8 +63,7 @@ export default function Sidebar({ setWorkspaceId }) {
   return (
     <div className="sidebar">
       <div className="sidebar__header">
-        <Logo className="sidebar__logo" />
-        <h1 className="sidebar__title">OpenBoard</h1>
+        <Logo />
       </div>
 
       {isLoading ? (
@@ -105,8 +104,11 @@ export default function Sidebar({ setWorkspaceId }) {
               />
             </div>
 
-            <CreateGroupModal open={showCreateGroupModal} setOpen={setShowCreateGroupModal}
-                              fetchUserData={fetchUserData} />
+            <CreateGroupModal
+              open={showCreateGroupModal}
+              setOpen={setShowCreateGroupModal}
+              fetchUserData={fetchUserData}
+            />
           </div>
 
           <div className="sidebar__footer">
