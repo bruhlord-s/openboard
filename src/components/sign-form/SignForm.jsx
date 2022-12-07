@@ -9,7 +9,7 @@ export default function SignForm({ title, errors, children }) {
           <Logo />
         </div>
         <h2 className="sign__title">{title}</h2>
-        {errors.length > 1 && <div className="sign__error">{errors}</div>}
+        {errors?.length > 0 && <div className="sign__error">{errors}</div>}
         <div className="sign__form">{children}</div>
       </div>
     </div>

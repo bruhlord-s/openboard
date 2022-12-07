@@ -23,6 +23,7 @@ export default function WorkspaceView({ workspaceId }) {
       })
       .then((res) => {
         setWorkspace(res.data.data);
+        console.log(res.data.data);
         setIsLoading(false);
       })
       .catch((err) => {

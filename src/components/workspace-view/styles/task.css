@@ -1,0 +1,29 @@
+.task {
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.task__title {
+  font-size: 16px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.task__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task__estimated,
+.task__assignee {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #00000080;
+  font-size: 14px;
+}

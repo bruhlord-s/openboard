@@ -84,6 +84,7 @@
     )
     /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
   border-radius: 8px;
+  border: 0;
 
   font-weight: 700;
   color: #fff;
@@ -103,4 +104,9 @@
 
 .task-modal__btn:hover {
   box-shadow: 1px 1px 4px #00000080;
+}
+
+.task-modal__btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }

@@ -69,7 +69,9 @@ export default function Login() {
               <ErrorMessage name="password" component="div" />
             </div>
 
-            <div className="form__submit">Sign In</div>
+            <button className="form__submit" type="submit">
+              Sign In
+            </button>
             <p className="another">
               First time here?{" "}
               <Link className="another__link" to="/register">

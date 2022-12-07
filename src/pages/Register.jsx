@@ -26,7 +26,7 @@ const validationSchema = Yup.object({
 });
 
 export default function Register() {
-  const [errors, setErrors] = useState(["Something went wrong"]);
+  const [errors, setErrors] = useState();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
@@ -95,7 +95,9 @@ export default function Register() {
               <ErrorMessage name="password_confirmation" component="div" />
             </div>
 
-            <div className="form__submit">Sign Up</div>
+            <button className="form__submit" type="submit">
+              Sign Up
+            </button>
 
             <p className="another">
               Already have an account?{" "}

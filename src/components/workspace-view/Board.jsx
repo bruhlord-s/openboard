@@ -4,6 +4,7 @@ import BoardMenu from "./modals/BoardMenu";
 import { useState } from "react";
 import EditBoardModal from "./modals/EditBoardModal";
 import ConfirmDeleteModal from "../modals/ConfirmDeleteModal";
+import Task from "./Task";
 
 export default function Board({ data, fetchWorkspace }) {
   const [showEditModal, setShowEditModal] = useState(false);
@@ -19,12 +20,19 @@ export default function Board({ data, fetchWorkspace }) {
         <div className="board__header">
           <h2 className="board__title">{data.name}</h2>
           <div className="board__right">
-            <div className="board__counter">3</div>
+            <div className="board__counter">{data?.tasks.length}</div>
             <BoardMenu
               className="board__menu"
               setShowEditModal={setShowEditModal}
               setShowDeleteModal={setShowDeleteModal}
             />
+          </div>
+        </div>
+        <div className="board__body">
+          <div className="board__tasks">
+            {data?.tasks.map((task) => (
+              <Task data={task} key={task.id} />
+            ))}
           </div>
         </div>
       </div>

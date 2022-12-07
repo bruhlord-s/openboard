@@ -1,9 +1,37 @@
-import { useMemo } from "react";
+import axios from "axios";
+import { useEffect } from "react";
+import { useMemo, useState } from "react";
 import Select from "react-select";
 import Popup from "reactjs-popup";
 import useWorkspaceBoards from "../../../hooks/useWorkspaceBoards";
 import useWorkspaceMembers from "../../../hooks/useWorkspaceMembers";
 import "../styles/task-modal.css";
+
+const parseTime = (str) => {
+  let seconds = 0;
+  let months = str.match(/(\d+)\s*M/);
+  let days = str.match(/(\d+)\s*D/);
+  let hours = str.match(/(\d+)\s*h/);
+  let minutes = str.match(/(\d+)\s*m/);
+  let secs = str.match(/(\d+)\s*s/);
+  console.log(str);
+  if (months) {
+    seconds += parseInt(months[1]) * 86400 * 30;
+  }
+  if (days) {
+    seconds += parseInt(days[1]) * 86400;
+  }
+  if (hours) {
+    seconds += parseInt(hours[1]) * 3600;
+  }
+  if (minutes) {
+    seconds += parseInt(minutes[1]) * 60;
+  }
+  if (secs) {
+    seconds += parseInt(secs[1]);
+  }
+  return seconds;
+};
 
 const boardsStyles = {
   control: (styles, { data }) => ({
@@ -61,6 +89,14 @@ export default function CreateTaskModal({ open, setOpen, workspace, update }) {
   const [boards, isBoardsLoading] = useWorkspaceBoards(workspace?.id);
   const [members, isMembersLoading] = useWorkspaceMembers(workspace?.id);
 
+  const [boardId, setBoardId] = useState(null);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [userId, setUserId] = useState(null);
+  const [timeEstimated, setTimeEstimated] = useState("");
+
+  const [disabled, setDisabled] = useState(false);
+
   const boardsOptions = useMemo(() => {
     if (!boards) return;
 
@@ -88,6 +124,42 @@ export default function CreateTaskModal({ open, setOpen, workspace, update }) {
     return options;
   }, [members]);
 
+  useEffect(() => {
+    setBoardId(boardsOptions[0]?.value);
+  }, [boardsOptions]);
+
+  useEffect(() => {
+    if (name.length < 1) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  }, [name]);
+
+  const handleSubmit = () => {
+    const data = {
+      board_id: boardId,
+      name: name,
+      description: description,
+      user_id: userId,
+      time_estimated: parseTime(timeEstimated),
+    };
+
+    axios
+      .post("/task", data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+        },
+      })
+      .then((res) => {
+        update();
+        setOpen(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <Popup className="task-modal" open={open} onClose={() => setOpen(false)}>
       <div className="task-modal">
@@ -104,18 +176,21 @@ export default function CreateTaskModal({ open, setOpen, workspace, update }) {
             styles={boardsStyles}
             options={boardsOptions}
             defaultValue={boardsOptions[0]}
+            onChange={(option) => setBoardId(option.value)}
           />
           <span className="task-modal__task-name-divider">/</span>
           <input
             type="text"
             className="task-modal__task-name-input"
             placeholder="Task name"
+            onChange={(e) => setName(e.currentTarget.value)}
           />
         </div>
         <textarea
           className="task-modal__desc-input"
           rows="10"
           placeholder="Task description"
+          onChange={(e) => setDescription(e.currentTarget.value)}
         ></textarea>
         <div className="task-modal__input-row">
           <div className="task-modal__input-group">
@@ -124,6 +199,7 @@ export default function CreateTaskModal({ open, setOpen, workspace, update }) {
               styles={membersStyles}
               options={membersOptions}
               defaultValue={membersOptions[0]}
+              onChange={(option) => setUserId(option.value)}
             />
           </div>
           <div className="task-modal__input-group">
@@ -132,11 +208,18 @@ export default function CreateTaskModal({ open, setOpen, workspace, update }) {
               type="text"
               className="task-modal__input"
               placeholder="2h 30m 10s"
+              onChange={(e) => setTimeEstimated(e.currentTarget.value)}
             />
           </div>
         </div>
         <div className="task-modal__footer">
-          <div className="task-modal__btn">Create</div>
+          <button
+            className="task-modal__btn"
+            onClick={() => handleSubmit()}
+            disabled={disabled}
+          >
+            Create
+          </button>
         </div>
       </div>
     </Popup>
