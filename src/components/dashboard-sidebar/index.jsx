@@ -113,7 +113,7 @@ export default function Sidebar({ setWorkspaceId }) {
 
           <div className="sidebar__footer">
             <User data={user} />
-            <span className="sidebar__footer-divider"></span>
+            {/* <span className="sidebar__footer-divider"></span> */}
             <img
               className="sidebar__logout"
               src={LogoutIcon}
