@@ -13,6 +13,6 @@
   background: radial-gradient(50% 50% at 50% 50%, #ffdace 0%, #ffffff 100%);
 }
 
-.button:hover {
-  filter: brightness(90%);
+.welcome__logo {
+  width: 300px;
 }

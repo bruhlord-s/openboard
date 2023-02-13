@@ -30,6 +30,9 @@ export default function Board({ data, fetchWorkspace }) {
         </div>
         <div className="board__body">
           <div className="board__tasks">
+            {data?.tasks.length < 1 && (
+              <p className="board__no-tasks">No tasks =/</p>
+            )}
             {data?.tasks.map((task) => (
               <Task data={task} key={task.id} />
             ))}

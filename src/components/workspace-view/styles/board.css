@@ -58,3 +58,8 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.board__no-tasks {
+  font-size: 14px;
+  color: #141414;
+}

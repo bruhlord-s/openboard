@@ -8,7 +8,9 @@ export default function Welcome() {
 
   return (
     <div className="welcome">
-      <Logo />
+      <div className="welcome__logo">
+        <Logo />
+      </div>
 
       <div
         className="button"
