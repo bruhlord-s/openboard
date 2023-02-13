@@ -13,20 +13,6 @@
   background: radial-gradient(50% 50% at 50% 50%, #ffdace 0%, #ffffff 100%);
 }
 
-.button {
-  width: 175px;
-  padding: 18px 0;
-  font-size: 20px;
-  color: #fff;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-  transition: 0.1s;
-}
-
 .button:hover {
   filter: brightness(90%);
 }

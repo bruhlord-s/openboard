@@ -1,49 +1,54 @@
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header__title {
-    font-size: 20px;
-    font-weight: 700;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .skeleton__header-title {
-    width: 220px;
+  width: 220px;
 }
 
 .header__menu {
-    display: flex;
-    align-items: center;
-    gap: 22px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
 }
 
 .header__button {
-    width: 125px;
-    display: flex;
-    justify-content: space-between;
+  width: 125px;
+  display: flex;
+  justify-content: space-between;
 
-    padding: 8px 10px;
-    color: #fff;
+  padding: 8px 10px;
+  color: #fff;
 
-    background: radial-gradient(100% 2197.27% at 100% 100%, rgba(218, 42, 247, 0.8) 0%, rgba(95, 112, 223, 0.8) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 6px;
+  background: radial-gradient(
+      100% 2197.27% at 100% 100%,
+      rgba(218, 42, 247, 0.8) 0%,
+      rgba(95, 112, 223, 0.8) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
 
-    cursor: pointer;
-    transition: .2s;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .header__button:hover {
-    filter: brightness(90%);
+  filter: brightness(90%);
 }
 
 .header__button img {
-    width: 16px;
-    filter: invert(1);
+  width: 16px;
+  filter: invert(1);
 }
 
 .header__button p {
-    font-size: 16px;
+  font-size: 16px;
 }

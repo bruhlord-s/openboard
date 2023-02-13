@@ -1,6 +1,12 @@
-import './Button.css'
+import "./Button.css";
 
-export default function Button({ className, title, onClick, submit, disabled }) {
+export default function Button({
+  className,
+  title,
+  onClick,
+  submit,
+  disabled,
+}) {
   // return submit ? (
   //   <button
   //     type='submit'
@@ -16,11 +22,12 @@ export default function Button({ className, title, onClick, submit, disabled }) 
 
   return (
     <button
-      type={submit ? 'submit' : 'button'}
+      type={submit ? "submit" : "button"}
       disabled={disabled}
       onClick={onClick}
-      className={`${className} button button--primary`}>
+      className={`${className} button`}
+    >
       {title}
     </button>
-  ) 
+  );
 }

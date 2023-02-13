@@ -2,20 +2,21 @@
   color: #fff;
 
   width: 175px;
-  padding: 14px 0;
+  padding: 10px 0;
 
   background: radial-gradient(
-      100% 1225% at 0% 13%,
-      rgba(79, 122, 219, 0.86) 0%,
-      rgba(218, 42, 247, 0.89) 100%
+      100% 2197.27% at 100% 100%,
+      rgba(218, 42, 247, 0.8) 0%,
+      rgba(95, 112, 223, 0.8) 100%
     )
     /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
   border-radius: 8px;
 
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 500;
 
   border: 0;
+  cursor: pointer;
 }
 
 .button:disabled {

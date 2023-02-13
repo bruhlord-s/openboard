@@ -69,16 +69,6 @@
 
 .sidebar__create-one {
   margin-top: 40px;
-  width: 175px;
-  padding: 14px 0;
-
-  background: radial-gradient(100% 1225% at 0% 13%, rgba(79, 122, 219, 0.86) 0%, rgba(218, 42, 247, 0.89) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
-  border-radius: 8px;
-
-  font-size: 18px;
-  font-weight: 700;
-
-  border: 0;
 }
 
 .button-wrapper {
