@@ -6,6 +6,7 @@ import EditBoardModal from "./modals/EditBoardModal";
 import ConfirmDeleteModal from "../modals/ConfirmDeleteModal";
 import Task from "./Task";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import EditTaskModal from "./modals/EditTaskModal";
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -96,7 +97,11 @@ export default function Board({
                               provided.draggableProps.style
                             )}
                           >
-                            <Task data={task} />
+                            <Task
+                              data={task}
+                              workspace={workspace}
+                              update={fetchWorkspace}
+                            />
                           </div>
                         )}
                       </Draggable>
