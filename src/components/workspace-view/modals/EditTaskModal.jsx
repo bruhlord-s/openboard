@@ -146,6 +146,22 @@ export default function EditTaskModal({
     }
   }, [name]);
 
+  const handleDelete = () => {
+    axios
+      .delete(`/task/${task.id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+        },
+      })
+      .then((res) => {
+        update();
+        setOpen(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   const handleSubmit = () => {
     const data = {
       board_id: boardId,
@@ -229,6 +245,13 @@ export default function EditTaskModal({
             disabled={disabled}
           >
             Edit
+          </button>
+          <button
+            className="task-modal__btn task-modal__btn--warning"
+            onClick={() => handleDelete()}
+            disabled={disabled}
+          >
+            Delete
           </button>
         </div>
       </div>

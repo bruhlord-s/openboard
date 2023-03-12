@@ -74,6 +74,7 @@
 .task-modal__footer {
   display: flex;
   justify-content: center;
+  gap: 32px;
 }
 
 .task-modal__btn {
@@ -81,6 +82,32 @@
       100% 1225% at 0% 13%,
       rgba(79, 122, 219, 0.86) 0%,
       rgba(218, 42, 247, 0.89) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  border-radius: 8px;
+  border: 0;
+
+  font-weight: 700;
+  color: #fff;
+
+  width: 175px;
+  font-size: 18px;
+  padding: 14px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.task-modal__btn--warning {
+  background: radial-gradient(
+      100% 1225% at 0% 13%,
+      rgba(255, 25, 25, 0.86) 0%,
+      rgba(255, 92, 92, 0.89) 100%
     )
     /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
   border-radius: 8px;
