@@ -46,7 +46,7 @@
 }
 
 .sidebar__groups {
-  gap: 16px;
+  gap: 8px;
   display: flex;
   flex-direction: column;
 }

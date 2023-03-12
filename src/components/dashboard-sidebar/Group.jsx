@@ -10,7 +10,7 @@ import InviteToGroupModal from "./modals/InviteToGroupModal";
 import ConfirmDeleteGroupModal from "./modals/ConfirmDeleteGroupModal.jsx";
 
 export default function Group({ data, fetchUserData, setWorkspaceId }) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const [showEditGroupModal, setShowEditGroupModal] = useState(false);
   const [showInviteModal, setShowInviteModal] = useState(false);
   const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false);
@@ -50,15 +50,23 @@ export default function Group({ data, fetchUserData, setWorkspaceId }) {
         </div>
       </div>
       <div className="group__workspaces">
-        {!isCollapsed &&
+        {!isCollapsed && (
           <div>
             {data.workspaces.map((workspace) => (
-              <Workspace data={workspace} key={workspace.id} fetchUserData={fetchUserData}
-                         setWorkspaceId={setWorkspaceId} />
+              <Workspace
+                data={workspace}
+                key={workspace.id}
+                fetchUserData={fetchUserData}
+                setWorkspaceId={setWorkspaceId}
+              />
             ))}
-            {data.workspaces.length < 1 && <p className="group__no-workspaces">No workspaces in the group =\</p>}
+            {data.workspaces.length < 1 && (
+              <p className="group__no-workspaces">
+                No workspaces in the group =\
+              </p>
+            )}
           </div>
-        }
+        )}
       </div>
 
       <CreateWorkspaceModal
