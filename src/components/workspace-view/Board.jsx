@@ -5,6 +5,7 @@ import { useState } from "react";
 import EditBoardModal from "./modals/EditBoardModal";
 import ConfirmDeleteModal from "../modals/ConfirmDeleteModal";
 import Task from "./Task";
+import { Draggable, Droppable } from "react-beautiful-dnd";
 
 export default function Board({ data, fetchWorkspace }) {
   const [showEditModal, setShowEditModal] = useState(false);

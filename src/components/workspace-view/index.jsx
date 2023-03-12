@@ -5,6 +5,19 @@ import axios from "axios";
 import CreateBoardModal from "./modals/CreateBoardModal";
 import Board from "./Board";
 import CreateTaskModal from "./modals/CreateTaskModal";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  return result;
+};
+
+const getItemStyle = (isDragging, draggableStyle) => ({
+  ...draggableStyle,
+});
 
 export default function WorkspaceView({ workspaceId }) {
   const [workspace, setWorkspace] = useState();
@@ -32,6 +45,25 @@ export default function WorkspaceView({ workspaceId }) {
       });
   };
 
+  const onDragEnd = (result) => {
+    if (!result.destination) {
+      return;
+    }
+
+    console.log(result);
+
+    const items = reorder(
+      workspace.boards,
+      result.source.index,
+      result.destination.index
+    );
+
+    const newWorkspace = workspace;
+    newWorkspace.boards = items;
+
+    setWorkspace(newWorkspace);
+  };
+
   useEffect(() => {
     fetchWorkspace();
   }, [workspaceId]);
@@ -44,11 +76,40 @@ export default function WorkspaceView({ workspaceId }) {
         setShowAddTaskModal={setShowAddTaskModal}
         isLoading={isLoading}
       />
-      <div className="workspace-view__boards">
-        {workspace?.boards.map((board) => (
-          <Board data={board} fetchWorkspace={fetchWorkspace} key={board.id} />
-        ))}
-      </div>
+      <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
+        <Droppable droppableId="boards" direction="horizontal">
+          {(provided, snapshot) => (
+            <div
+              className="workspace-view__boards"
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              {workspace?.boards.map((board, i) => (
+                <Draggable
+                  key={board.id}
+                  draggableId={board.id.toString()}
+                  index={i}
+                >
+                  {(provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      style={getItemStyle(
+                        snapshot.isDragging,
+                        provided.draggableProps.style
+                      )}
+                    >
+                      <Board data={board} fetchWorkspace={fetchWorkspace} />
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
       <CreateBoardModal
         open={showAddBoardModal}
         setOpen={setShowAddBoardModal}
