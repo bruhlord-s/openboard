@@ -50,8 +50,6 @@ export default function WorkspaceView({ workspaceId }) {
       return;
     }
 
-    console.log(result);
-
     const items = reorder(
       workspace.boards,
       result.source.index,
@@ -100,7 +98,12 @@ export default function WorkspaceView({ workspaceId }) {
                         provided.draggableProps.style
                       )}
                     >
-                      <Board data={board} fetchWorkspace={fetchWorkspace} />
+                      <Board
+                        data={board}
+                        fetchWorkspace={fetchWorkspace}
+                        setWorkspace={setWorkspace}
+                        workspace={workspace}
+                      />
                     </div>
                   )}
                 </Draggable>

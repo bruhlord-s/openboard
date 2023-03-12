@@ -5,11 +5,49 @@ import { useState } from "react";
 import EditBoardModal from "./modals/EditBoardModal";
 import ConfirmDeleteModal from "../modals/ConfirmDeleteModal";
 import Task from "./Task";
-import { Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
-export default function Board({ data, fetchWorkspace }) {
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  return result;
+};
+
+const getItemStyle = (isDragging, draggableStyle) => ({
+  ...draggableStyle,
+});
+
+export default function Board({
+  data,
+  fetchWorkspace,
+  setWorkspace,
+  workspace,
+}) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const onDragStart = (e) => {
+    e.stopPropagination();
+  };
+
+  const onDragEnd = (result) => {
+    if (!result.destination) {
+      return;
+    }
+
+    const items = reorder(
+      data.tasks,
+      result.source.index,
+      result.destination.index
+    );
+
+    const newWorkspace = workspace;
+    newWorkspace.boards.find((board) => board.id === data.id).tasks = items;
+
+    setWorkspace(newWorkspace);
+  };
 
   return (
     <div className="board">
@@ -34,9 +72,40 @@ export default function Board({ data, fetchWorkspace }) {
             {data?.tasks.length < 1 && (
               <p className="board__no-tasks">No tasks =/</p>
             )}
-            {data?.tasks.map((task) => (
-              <Task data={task} key={task.id} />
-            ))}
+            <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
+              <Droppable droppableId="tasks" direction="vertical">
+                {(provided) => (
+                  <div
+                    className="board__tasks"
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                  >
+                    {data?.tasks.map((task, i) => (
+                      <Draggable
+                        key={task.id}
+                        draggableId={task.id.toString()}
+                        index={i}
+                      >
+                        {(provided, snapshot) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            style={getItemStyle(
+                              snapshot.isDragging,
+                              provided.draggableProps.style
+                            )}
+                          >
+                            <Task data={task} />
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </DragDropContext>
           </div>
         </div>
       </div>

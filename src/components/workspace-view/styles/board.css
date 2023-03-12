@@ -56,7 +56,7 @@
 .board__tasks {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
 }
 
 .board__no-tasks {
